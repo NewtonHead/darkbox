@@ -1,0 +1,58 @@
+font:
+  normal:
+    family: monospace
+
+  size: 9.0
+
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
+
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: CellForeground
+
+  line_indicator:
+    foreground: None
+    background: None
+
+  selection:
+    text: CellBackground
+    background: CellForeground
+
+  normal:
+    black:   '#1a1a1a'
+    red:     '#ab0000'
+    green:   '#30a118'
+    yellow:  '#ab6f00'
+    blue:    '#2b2bab'
+    magenta: '#ab00ab'
+    cyan:    '#00abab'
+    white:   '#ffffff'
+
+  bright:
+    black:   '#333333'
+    red:     '#ff0000'
+    green:   '#4af626'
+    yellow:  '#ffa500'
+    blue:    '#4040ff'
+    magenta: '#ff00ff'
+    cyan:    '#00ffff'
+    white:   '#ffffff'
+
+background_opacity: 0.5
+
+
+cursor:
+  style:
+    shape: Underline
+
+    blinking: On
+
+  blink_interval: 750
+
