@@ -23,12 +23,15 @@ echo 'PUT YOUR USER PASSWORD'
 echo 'PUT YOUR USER PASSWORD'
 useradd -mG wheel user
 passwd user
+touch /home/user/.xinitrc
+touch /home/user/.bash_profile
+touch /home/user/.bashrc
 echo 'dwmstatus 2>&1 >/dev/null &' >> /home/user/.xinitrc
 echo 'exec dwm' >> /home/user/.xinitrc
 echo 'startx' >> /home/user/.bash_profile
 echo neofetch >> /home/user/.bashrc
 mkdir /home/user/.config
-git clone https://github.com/NewtonHead/mydwm /mylinux/mydwm
+git clone https://github.com/NewtonHead/mydwm /darkbox/mydwm
 cd mydwm/dwm
 make clean install
 cd /darkbox/mydwm/dwmstatus
