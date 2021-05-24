@@ -31,14 +31,14 @@ mkdir /home/user/.config
 git clone https://github.com/NewtonHead/mydwm /mylinux/mydwm
 cd mydwm/dwm
 make clean install
-cd /Darkbox/mydwm/dwmstatus
+cd /darkbox/mydwm/dwmstatus
 make
 make PREFIX=/usr install
-cd /Darkbox/mydwm/dmenu
+cd /darkbox/mydwm/dmenu
 make clean install
-cp -r /Darkbox/configs/alacritty.yml /home/user/.alacritty.yml
-cp -r /Darkbox/configs/neofetch /home/user/.config/neofetch
-cp -r /Darkbox/configs/xorg.conf.d /etc/X11/xorg.conf.d/00-keyboard.conf
+cp -r /darkbox/configs/alacritty.yml /home/user/.alacritty.yml
+cp -r /darkbox/configs/neofetch /home/user/.config/neofetch
+cp -r /darkbox/configs/xorg.conf.d /etc/X11/xorg.conf.d/00-keyboard.conf
 echo 'INSTALLATION COMPLETE, PLEASE, REBOOT YOUR PC'
 echo 'INSTALLATION COMPLETE, PLEASE, REBOOT YOUR PC'
 echo 'INSTALLATION COMPLETE, PLEASE, REBOOT YOUR PC'
