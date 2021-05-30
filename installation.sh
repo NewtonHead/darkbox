@@ -39,7 +39,7 @@ make
 make PREFIX=/usr install
 cd /darkbox/mydwm/dmenu
 make clean install
-cp -r /darkbox/configs/alacritty.yml /home/user/.alacritty.yml
+cp -r /darkbox/configs/.dreamalacritty.yml /home/user/.alacritty.yml
 cp -r /darkbox/configs/neofetch /home/user/.config/neofetch
 cp -r /darkbox/configs/xorg.conf.d /etc/X11/xorg.conf.d/00-keyboard.conf
 echo 'INSTALLATION COMPLETE, PLEASE, REBOOT YOUR PC'
