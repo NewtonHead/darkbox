@@ -10,7 +10,7 @@ echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 hwclock --systohc
 locale-gen
-pacman -Syu grub networkmanager base-devel linux-headers firefox git neofetch sudo xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk alacritty ttf-font-awesome alsa-utils alsa-firmware # IF YOU HAVE WINDOWS INSTALLED, INSTALL: ntfs-3g os-prober mtools dosfstools #OPTIONAL SOFTWARE: keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice
+pacman -Syu grub networkmanager base-devel sudo xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk alacritty ttf-font-awesome alsa-utils alsa-firmware # IF YOU HAVE WINDOWS INSTALLED, INSTALL: ntfs-3g os-prober mtools dosfstools #OPTIONAL SOFTWARE: keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice
 grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
