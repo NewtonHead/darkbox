@@ -1,3 +1,7 @@
+#!/bin/bash        
+
+user='' #Insert your username
+
 ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime
 echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 echo 'LANG=en_US.UTF-8' >> /etc/locale.conf
@@ -21,16 +25,16 @@ passwd
 echo 'PUT YOUR USER PASSWORD'
 echo 'PUT YOUR USER PASSWORD'
 echo 'PUT YOUR USER PASSWORD'
-useradd -mG wheel user
+useradd -mG wheel $user
 passwd user
-touch /home/user/.xinitrc
-touch /home/user/.bash_profile
-touch /home/user/.bashrc
-echo 'dwmstatus 2>&1 >/dev/null &' >> /home/user/.xinitrc
-echo 'exec dwm' >> /home/user/.xinitrc
-echo 'startx' >> /home/user/.bash_profile
-echo neofetch >> /home/user/.bashrc
-mkdir /home/user/.config
+touch /home/$user/.xinitrc
+touch /home/$user/.bash_profile
+touch /home/$user/.bashrc
+echo 'dwmstatus 2>&1 >/dev/null &' >> /home/$user/.xinitrc
+echo 'exec dwm' >> /home/$user/.xinitrc
+echo 'startx' >> /home/$user/.bash_profile
+echo neofetch >> /home/$user/.bashrc
+mkdir /home/$user/.config
 git clone https://github.com/NewtonHead/mydwm /darkbox/mydwm
 cd mydwm/dwm
 make clean install
@@ -39,8 +43,8 @@ make
 make PREFIX=/usr install
 cd /darkbox/mydwm/dmenu
 make clean install
-cp -r /darkbox/configs/.alacritty.yml /home/user/.alacritty.yml
-cp -r /darkbox/configs/neofetch /home/user/.config/neofetch
+cp -r /darkbox/configs/.alacritty.yml /home/$user/.alacritty.yml
+cp -r /darkbox/configs/neofetch /home/$user/.config/neofetch
 cp -r /darkbox/configs/xorg.conf.d /etc/X11/xorg.conf.d/00-keyboard.conf
 echo 'INSTALLATION COMPLETE, PLEASE, REBOOT YOUR PC'
 echo 'INSTALLATION COMPLETE, PLEASE, REBOOT YOUR PC'
