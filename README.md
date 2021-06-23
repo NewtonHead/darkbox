@@ -15,5 +15,5 @@ Window Manager: dwm
 You'll be asked to input a root and user password. Also, you have to config sudoers file (/etc/sudoers) in order to allow wheel group to perform root commands.
 You can edit installation.sh file and change some packages that you might not need, you can find some useful comments inside the code.
 
-#Thanks
+# Thanks
 Thanks for the opportuniy, i love customizing arch linux!!
