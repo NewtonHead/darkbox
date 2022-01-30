@@ -1,6 +1,41 @@
 #!/bin/bash        
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+packages = 'grub networkmanager base-devel sudo xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk alacritty ttf-font-awesome alsa-utils alsa-firmware'
+windowsPackages = 'ntfs-3g os-prober mtools dosfstools '
+otherSoftware = 'keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice virtualbox atom pulseaudio pulseaudio-alsa neofetch'
 
-user='' #Insert your username
+echo '${GREEN}Please, tell me your username${NC}'
+read user
+echo '${GREEN}Do you have windows installed? (1 yes, 2 no)'
+isValid = false
+while [$isValid == false]
+	do
+	read windowsInstalled
+	if [$windowsInstalled == 1] && [$windowsInstalled == 2]
+		then
+		packages += windowsPackages
+		isValid = true
+	else
+		echo '${GREEN}Wrong input, please, try again.'
+	done
+echo '${GREEN}Do you want a clean installed, or you want to install some useful software? (Like Discord, Telegram, etc)'
+echo '${GREEN}1 = clean, 2 = install software'
+isValid = false
+while [$isValid == false]
+	do
+	read cleanInstall
+		if [$cleanInstall == 1]
+			then
+			isValid = true
+		elif [$cleanInstall == 2]
+			then 
+			packages += otherSoftware
+			isValid = true
+		else
+			echo '${GREEN}Wrong input, please, try again.'
+		fi
+	done
 
 ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime
 echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
@@ -14,7 +49,7 @@ echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 hwclock --systohc
 locale-gen
-pacman -Syu grub networkmanager base-devel sudo xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk alacritty ttf-font-awesome alsa-utils alsa-firmware # IF YOU HAVE WINDOWS INSTALLED, INSTALL: ntfs-3g os-prober mtools dosfstools #OPTIONAL SOFTWARE: keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice virtualbox atom pulseaudio pulseaudio-alsa neofetch
+pacman -Syu packages
 grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
@@ -26,7 +61,7 @@ echo 'PUT YOUR USER PASSWORD'
 echo 'PUT YOUR USER PASSWORD'
 echo 'PUT YOUR USER PASSWORD'
 useradd -mG wheel $user
-passwd user
+passwd $user
 touch /home/$user/.xinitrc
 touch /home/$user/.bash_profile
 touch /home/$user/.bashrc
