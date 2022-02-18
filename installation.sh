@@ -17,6 +17,7 @@ while [ $isValid = false ]; do
 	else
 		echo 'Wrong input, please, try again.'
 	fi
+done
 echo 'Do you want a clean installed, or you want to install some useful software? (Like Discord, Telegram, etc)'
 echo '1=clean'
 echo '2=install software'
@@ -45,10 +46,10 @@ echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 hwclock --systohc
 locale-gen
-pacman -Syu packages
+pacman -Syu $packages
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
-systemctl enable NetworkManager
+systemctl enable NetworkManager.service
 echo 'PUT YOUR ROOT PASSWORD'
 echo 'PUT YOUR ROOT PASSWORD'
 echo 'PUT YOUR ROOT PASSWORD'
