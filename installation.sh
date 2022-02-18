@@ -1,7 +1,7 @@
 #!/bin/bash        
 packages='grub efibootmgr networkmanager base-devel sudo xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk alacritty ttf-font-awesome alsa-utils alsa-firmware '
-windowsPackages = 'ntfs-3g os-prober mtools dosfstools '
-otherSoftware = 'keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice virtualbox code pulseaudio pulseaudio-alsa neofetch'
+windowsPackages='ntfs-3g os-prober mtools dosfstools '
+otherSoftware='keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice virtualbox code pulseaudio pulseaudio-alsa neofetch'
 
 echo 'Please, tell me your username'
 read user
