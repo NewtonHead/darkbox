@@ -1,41 +1,37 @@
 #!/bin/bash        
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
-packages = 'grub networkmanager base-devel sudo xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk alacritty ttf-font-awesome alsa-utils alsa-firmware'
+packages='grub efibootmgr networkmanager base-devel sudo xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk alacritty ttf-font-awesome alsa-utils alsa-firmware '
 windowsPackages = 'ntfs-3g os-prober mtools dosfstools '
-otherSoftware = 'keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice virtualbox atom pulseaudio pulseaudio-alsa neofetch'
+otherSoftware = 'keepassxc vlc feh scrot gimp audacity htop discord steam telegram-desktop qbittorrent libreoffice virtualbox code pulseaudio pulseaudio-alsa neofetch'
 
-echo '${GREEN}Please, tell me your username${NC}'
+echo 'Please, tell me your username'
 read user
-echo '${GREEN}Do you have windows installed? (1 yes, 2 no)'
-isValid = false
-while [$isValid == false]
-	do
+echo 'Do you have windows installed? (1 yes, 2 no)'
+isValid=false
+while [ $isValid = false ]; do
 	read windowsInstalled
-	if [$windowsInstalled == 1] && [$windowsInstalled == 2]
-		then
-		packages += windowsPackages
-		isValid = true
+	if [[ "$windowsInstalled" = "1" ]]; then
+		packages="$packages$windowsPackages"
+		isValid=true
+	elif [[ "$windowsInstalled" = "2" ]]; then
+		isValid=true
 	else
-		echo '${GREEN}Wrong input, please, try again.'
-	done
-echo '${GREEN}Do you want a clean installed, or you want to install some useful software? (Like Discord, Telegram, etc)'
-echo '${GREEN}1 = clean, 2 = install software'
-isValid = false
-while [$isValid == false]
-	do
+		echo 'Wrong input, please, try again.'
+	fi
+echo 'Do you want a clean installed, or you want to install some useful software? (Like Discord, Telegram, etc)'
+echo '1=clean'
+echo '2=install software'
+isValid=false
+while [ $isValid = false ]; do
 	read cleanInstall
-		if [$cleanInstall == 1]
-			then
-			isValid = true
-		elif [$cleanInstall == 2]
-			then 
-			packages += otherSoftware
-			isValid = true
-		else
-			echo '${GREEN}Wrong input, please, try again.'
-		fi
-	done
+	if [[ "$cleanInstall" = "1" ]]; then
+		isValid=true
+	elif [[ "$cleanInstall" = "2" ]]; then 
+		packages="$packages$otherSoftware"
+		isValid=true
+	else
+		echo 'Wrong input, please, try again.'
+	fi
+done
 
 ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime
 echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
@@ -50,7 +46,7 @@ echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 hwclock --systohc
 locale-gen
 pacman -Syu packages
-grub-install --target=i386-pc /dev/sda
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 echo 'PUT YOUR ROOT PASSWORD'
